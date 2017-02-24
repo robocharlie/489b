@@ -1,5 +1,6 @@
 # dependencies
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
+import fakeRPiGPIO as GPIO
 import time
 
 # Port numbering
