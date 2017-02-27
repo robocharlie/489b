@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ENME489B_helloworld" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/HW2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/HW3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/PlayerGuitar" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/hello-world" vcs="Git" />
   </component>
 </project>
