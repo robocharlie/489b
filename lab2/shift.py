@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import time
 
 # Port numbering
-GPIO.setmode(GPIO.bcm)
+GPIO.setmode(GPIO.BCM)
 
 # define pins
 data_pin = 16
@@ -27,7 +27,14 @@ for i in range(8):
         GPIO.OUTPUT(data_pin, 0)
     mask <<= 1
 
+    # toggle clock to shift data into register
     GPIO.OUTPUT(clock_pin, 1)
     time.sleep(0)
-
     GPIO.OUTPUT(clock_pin, 0)
+
+# toggle latch to output
+GPIO.OUTPUT(latch_pin, 1)
+time.sleep(0)
+GPIO.OUTPUT(latch_pin,0)
+
+GPIO.cleanup()
