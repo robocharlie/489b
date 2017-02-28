@@ -43,7 +43,7 @@ def set_value(byte_val):
     toggle(latch_pin)
 
 for val in numbers:
-    set_value(numbers[val])
+    set_value(val)
     time.sleep(1)
 #set_value(numbers[5])
 
