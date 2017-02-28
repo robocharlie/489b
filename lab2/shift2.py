@@ -42,6 +42,9 @@ def set_value(byte_val):
         toggle(clock_pin)
     toggle(latch_pin)
 
-set_value(numbers[5])
+for val in numbers:
+    set_value(numbers[val])
+    time.sleep(1)
+#set_value(numbers[5])
 
 GPIO.cleanup()
