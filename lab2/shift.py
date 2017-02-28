@@ -14,8 +14,8 @@ GPIO.setup(data_pin, GPIO.OUT)
 GPIO.setup(latch_pin, GPIO.OUT, initial=0)
 GPIO.setup(clock_pin, GPIO.OUT, initial=0)
 
-#four = int('00110011', 2)
-four = int('1000000', 2)
+four = int('00110011', 2)
+#four = int('1000000', 2)
 mask = 1
 
 for i in range(8):
