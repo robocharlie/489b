@@ -40,6 +40,7 @@ def set_value(byte_val):
     for i in range(8):
         GPIO.output(data_pin, byte_val & (1 << i) == 0)
         toggle(clock_pin)
+        
     toggle(latch_pin)
 
 for val in numbers:
