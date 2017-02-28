@@ -21,20 +21,20 @@ mask = 1
 for i in range(8):
     # if we want the led off, set gpio high
     if four & mask == 0:
-        GPIO.OUTPUT(data_pin, 1)
+        GPIO.output(data_pin, 1)
     # else we want it on, set gpio low
     else:
-        GPIO.OUTPUT(data_pin, 0)
+        GPIO.output(data_pin, 0)
     mask <<= 1
 
     # toggle clock to shift data into register
-    GPIO.OUTPUT(clock_pin, 1)
+    GPIO.output(clock_pin, 1)
     time.sleep(0)
-    GPIO.OUTPUT(clock_pin, 0)
+    GPIO.output(clock_pin, 0)
 
 # toggle latch to output
-GPIO.OUTPUT(latch_pin, 1)
+GPIO.output(latch_pin, 1)
 time.sleep(0)
-GPIO.OUTPUT(latch_pin,0)
+GPIO.output(latch_pin,0)
 
 GPIO.cleanup()
