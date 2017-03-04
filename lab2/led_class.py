@@ -17,6 +17,7 @@ class LEDdisplay():
     int('01101111', 2)  # 9
   ]
 
+
   scroll = [
     int('00000000', 2),
     int('00000001', 2),
