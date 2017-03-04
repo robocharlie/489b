@@ -17,6 +17,18 @@ class LEDdisplay():
     int('01111011', 2)
   ]
 
+  scroll = [
+    int('00000000', 2),
+    int('00000001', 2),
+    int('00000010', 2),
+    int('00000100', 2),
+    int('00001000', 2),
+    int('00010000', 2),
+    int('00100000', 2),
+    int('01000000', 2),
+    int('10000000', 2)
+  ]
+
   def __init__(self, data, latch, clock):    
     # Port numbering
     GPIO.setmode(GPIO.BCM)
@@ -49,7 +61,7 @@ class LEDdisplay():
 
   # pass an integer form 0 to 9 to display
   def set_number(self, num):
-    self.set_value(self.numbers[num])
+    self.set_value(self.scroll[num])
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
