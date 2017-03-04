@@ -5,16 +5,16 @@ import time
 class LEDdisplay():
 
   numbers = [
-    int('01111110', 2),
-    int('00110000', 2),
-    int('01101101', 2),
-    int('01111001', 2),
-    int('00110011', 2),
-    int('01011011', 2),
-    int('01011111', 2),
-    int('01110000', 2),
-    int('01111111', 2),
-    int('01111011', 2)
+    int('10111111', 2), # 0
+    int('00000110', 2), # 1
+    int('11011011', 2), # 2
+    int('01001111', 2), # 3
+    int('11100110', 2), # 4
+    int('01101101', 2), # 5
+    int('11111101', 2), # 6
+    int('00000111', 2), # 7
+    int('11111111', 2), # 8
+    int('01101111', 2)  # 9
   ]
 
   scroll = [
@@ -61,7 +61,7 @@ class LEDdisplay():
 
   # pass an integer form 0 to 9 to display
   def set_number(self, num):
-    self.set_value(self.scroll[num])
+    self.set_value(self.numbers[num])
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
