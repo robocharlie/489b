@@ -65,11 +65,16 @@ class LEDdisplay():
     def set_number(self, num):
         self.set_value(self.scroll[num])
 
+    # Pass a pin number, and set the given LED
+    def set_single_pin(self, pin):
+        m = int('10000000', 2) >> pin
+        self.set_value(m)
+
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
-for val in range(10):
-    the_LEDdisplay.set_number(val)
+for val in range(7):
+    the_LEDdisplay.set_single_pin(val)
     time.sleep(1)
 # set_value(numbers[5])
 
