@@ -72,13 +72,14 @@ class LEDdisplay():
     def set_random_pins(self):
         self.set_value(randint(0, 255))
 
-
+# Create led display object
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
-for val in range(20):
+#
+for val in range(300):
     the_LEDdisplay.set_random_pins()
     print(val)
-    time.sleep(.1)
+    time.sleep(.01)
 # set_value(numbers[5])
 
 GPIO.cleanup()
