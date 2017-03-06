@@ -64,7 +64,6 @@ class LEDdisplay():
     # pass an integer form 0 to 9 to display
     def set_number(self, num):
         self.set_value(self.scroll[num])
-        self.set_value(self.numbers[num])
 
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
