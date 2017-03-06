@@ -82,13 +82,15 @@ for val in range(300):
     time.sleep(.01)
 
 # spiral pattern
-
+pattern = [1, 2, 64, 16, 8, 4, 64, 32]
 for x in range(5):
     for val in range(8):
-        pattern = [1, 2, 64, 16, 8, 4, 64, 32]
         the_LEDdisplay.set_value(pattern[val])
         time.sleep(.1)
-
-
+the_LEDdisplay.set_value(128)
+for x in range(5):
+    for val in range(8):
+        the_LEDdisplay.set_value((pattern[7-val]))
+        time.sleep(.08)
 
 GPIO.cleanup()
