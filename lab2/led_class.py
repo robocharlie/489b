@@ -86,6 +86,7 @@ pattern = [1, 2, 64, 16, 8, 4, 64, 32]
 for x in range(5):
     for val in pattern:
         the_LEDdisplay.set_value(pattern[val])
+        time.sleep(.1)
 
 
 
