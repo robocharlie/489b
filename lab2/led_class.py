@@ -1,7 +1,7 @@
 # dependencies
 import RPi.GPIO as GPIO
 import time
-
+from random import randint
 
 class LEDdisplay():
 
@@ -67,16 +67,18 @@ class LEDdisplay():
 
     # Pass a pin number, and set the given LED
     def set_single_pin(self, pin):
-        m = int('10000000', 2) >> pin
-        self.set_value(m)
+        self.set_value(int('10000000', 2) >> pin)
+
+    def set_random_pins(self):
+        self.set_value(randint(0, 255))
 
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
-for val in range(8):
-    the_LEDdisplay.set_single_pin(val)
+for val in range(20):
+    the_LEDdisplay.set_random_pins()
     print(val)
-    time.sleep(1)
+    time.sleep(.1)
 # set_value(numbers[5])
 
 GPIO.cleanup()
