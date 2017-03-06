@@ -4,19 +4,22 @@ import time
 
 
 class LEDdisplay():
+
+    # Patterns for 0-9
     numbers = [
-        int('10111111', 2),
+        int('00111111', 2),
         int('00000110', 2),
-        int('11011011', 2),
+        int('01011011', 2),
         int('01001111', 2),
-        int('11100110', 2),
+        int('01100110', 2),
         int('01101101', 2),
-        int('11111101', 2),
+        int('01111101', 2),
         int('00000111', 2),
-        int('11111111', 2),
+        int('01111111', 2),
         int('01101111', 2)
     ]
 
+    # Patterns to show nothing, A-G, and then decimal
     scroll = [
         int('00000000', 2),
         int('00000001', 2),
@@ -33,7 +36,7 @@ class LEDdisplay():
         # Port numbering
         GPIO.setmode(GPIO.BCM)
 
-        # define pins
+        # Define pins
         self.data_pin = data
         self.latch_pin = latch
         self.clock_pin = clock
@@ -60,7 +63,7 @@ class LEDdisplay():
 
     # pass an integer form 0 to 9 to display
     def set_number(self, num):
-        self.set_value(self.numbers[num])
+        self.set_value(self.scroll[num])
 
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
