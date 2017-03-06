@@ -73,7 +73,7 @@ class LEDdisplay():
 
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
-for val in range(7):
+for val in range(8):
     the_LEDdisplay.set_single_pin(val)
     time.sleep(1)
 # set_value(numbers[5])
