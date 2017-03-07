@@ -3,7 +3,8 @@ import RPi.GPIO as GPIO
 import time
 from random import randint
 
-class LEDdisplay():
+
+class LEDdisplay:
 
     # Patterns for 0-9
     numbers = [
