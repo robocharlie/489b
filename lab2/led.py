@@ -14,7 +14,7 @@ for val in range(300):
 
 the_LEDdisplay.patterns('spiral', False, .2, 5)
 the_LEDdisplay.patterns('circle', False, .2, 3)
-the_LEDdisplay.patterns('sprial', True, .2, 5)
+the_LEDdisplay.patterns('spiral', True, .2, 5)
 the_LEDdisplay.patterns('circle', True, .2, 3)
 
 # cleanup

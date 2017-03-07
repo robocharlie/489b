@@ -45,5 +45,5 @@ class LEDdisplay():
                     time.sleep(speed)
             else:
                 for i in range(len(patterns[pattern])):
-                    self.set_single_pin(pattern[i])
+                    self.set_single_pin(patterns[pattern][i])
                     time.sleep(speed)
