@@ -18,7 +18,7 @@ the_LEDdisplay.patterns('circle', True, .2, 1)
 
 for i in range(len(the_LEDdisplay.numbers)):
     the_LEDdisplay.set_number(i)
-    time.sleep(1)
+    time.sleep(.1*i + .2)
 
 # cleanup
 GPIO.cleanup()
