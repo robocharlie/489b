@@ -7,7 +7,7 @@ import time
 the_LEDdisplay = LEDdisplay(16, 12, 6)
 
 # Spam random combinations
-for val in range(300):
+for val in range(100):
     the_LEDdisplay.set_random_pins()
     print(val)
     time.sleep(.01)
