@@ -41,7 +41,7 @@ class LEDdisplay():
         for x in range(repeats):
             if invert:
                 for i in range(len(patterns[pattern])):
-                    self.set_single_pin(patterns[pattern][len(patterns[pattern]) - i])
+                    self.set_single_pin(patterns[pattern][len(patterns[pattern]) - 1 - i])
                     time.sleep(speed)
             else:
                 for i in range(len(patterns[pattern])):
