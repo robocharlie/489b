@@ -16,45 +16,50 @@ gpio.setmode(gpio.BCM)  # use GPIO pin numbering for extension board
 rs = 26  # register select (LCD pin 4)
 en = 13  # clock enable (LCD pin 6)
 for pin in (rs, en):
-  gpio.setup(pin, gpio.OUT, initial=0)
+    gpio.setup(pin, gpio.OUT, initial=0)
 
 dataPin, latchPin, clockPin = 16, 12, 6
 theShifter = Shifter(dataPin, latchPin, clockPin)   # create shift register object
 
 def getIP():  # get the Pi's IP number using a Unix command
-  cmd = "ip addr show wlan0 | grep 'inet\ ' | awk '{print $2}' | cut -d/ -f1"
-  p = Popen(cmd, shell=True, stdout=PIPE)
-  output = p.communicate()[0]
-  output = output.strip()    # remove whitespace characters
-  return output
+    cmd = "ip addr show wlan0 | grep 'inet\ ' | awk '{print $2}' | cut -d/ -f1"
+    p = Popen(cmd, shell=True, stdout=PIPE)
+    output = p.communicate()[0]
+    output = output.strip()    # remove whitespace characters
+    return output
+
 
 def delay_us(microsec):   # higher resolution delay function
-  pass
+    pass
+
 
 def ping():   # ping the clock enable pin (falling edge)
-  pass
+    pass
+
 
 def write(value, inputMode = 0):  # write input voltages to register
-  pass
+    pass
+
 
 def shift(steps, display = 0):     # shift cursor/display by # steps left/right
-  pass
+    pass
+
 
 def set_row_col(row, col=0):  # set the cursor row + column position
-  pass
+    pass
+
 
 def writeMessage(message):  # write a string to the display
-  pass
+    pass
+
 
 def scroll(steps):  # scroll the screen left a set # of steps, then return
-  pass
+    pass
+
 
 def clearDisplay():
-  pass
+    pass
+
 
 def initialize():  # initialize the display:
-  pass
-
-
-
-
+    pass
