@@ -52,7 +52,7 @@ def write(value, inputMode = 0):
 
 
 def set_row_col(row, col=0):  # set the cursor row + column position
-    ddram = int('10000000', 2)	# base instruction for setting DRAM address
+    ddram = int('10000000', 2)  # base instruction for setting DRAM address
     # set display data RAM (DDRAM) address for row/col
     # (see pg. 196 of datasheet, noting 0x40 = b1000000 = 1 << 6)
     write(ddram | ((row << 6) + col))
@@ -82,32 +82,36 @@ def shift(steps, display = 0):     # shift cursor/display by # steps left/right
 def scroll(steps):  # scroll the screen left a set # of steps, then return
     pass  # this is a lab 3 problem
 
-initialize()
+try:
+    initialize()
 
-# writeMessage() demo:
-set_row_col(0)  # go to 1st row
-writeMessage(getIP())
+    # writeMessage() demo:
+    set_row_col(0)  # go to 1st row
+    writeMessage(getIP())
 
-set_row_col(1)  # go to 2nd row 
-writeMessage(time.asctime(time.localtime(time.time())))
+    set_row_col(1)  # go to 2nd row
+    writeMessage(time.asctime(time.localtime(time.time())))
 
-time.sleep(5)
+    time.sleep(5)
 
-# JSON data demo:
-clearDisplay()
-url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
-theJSON = getJSON(url)
-set_row_col(0)
-writeMessage(theJSON["metadata"]["title"])
-set_row_col(1)
-writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
-time.sleep(3)
-while True:
-    for i in theJSON["features"]:  # print events greater than 4
-        if i["properties"]["mag"] >= 4.0:
-            clearDisplay()
-            set_row_col(0)
-            writeMessage(i["properties"]["place"])
-            set_row_col(1)
-            writeMessage("Magnitude " + str(i["properties"]["mag"]))
-            time.sleep(3)
+    # JSON data demo:
+    clearDisplay()
+    url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+    theJSON = getJSON(url)
+    set_row_col(0)
+    writeMessage(theJSON["metadata"]["title"])
+    set_row_col(1)
+    writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
+    time.sleep(3)
+    while True:
+        for i in theJSON["features"]:  # print events greater than 4
+            if i["properties"]["mag"] >= 4.0:
+                clearDisplay()
+                set_row_col(0)
+                writeMessage(i["properties"]["place"])
+                set_row_col(1)
+                writeMessage("Magnitude " + str(i["properties"]["mag"]))
+                time.sleep(3)
+except KeyboardInterrupt:
+    clearDisplay()
+    gpio.cleanup()
