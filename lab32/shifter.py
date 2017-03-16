@@ -24,4 +24,4 @@ class Shifter:
             # bit = int((byteVal & (1<<i)) == 0)        # load LSB first, invert high/low with byte
             GPIO.output(self.dataPin, bit)
             self.ping(self.clockPin)
-    self.ping(self.latchPin)
+        self.ping(self.latchPin)
