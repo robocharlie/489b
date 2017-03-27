@@ -120,7 +120,7 @@ try:
     write(0b01000001, 1)
     time.sleep(3)
     shift(1)
-    write(0b01000010)
+    write(0b01000010, 1)
     time.sleep(3)
     clearDisplay()
     gpio.cleanup()
