@@ -122,6 +122,12 @@ try:
     shift(1)
     write(0b01000010, 1)
     time.sleep(3)
+    shift(3)
+    write(0b01000011, 1)
+    time.sleep(3)
+    shift(-1)
+    write(0b01000100, 1)
+    time.sleep(3)
     clearDisplay()
     gpio.cleanup()
 
