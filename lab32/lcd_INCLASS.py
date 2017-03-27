@@ -44,7 +44,7 @@ def ping():   # ping the clock enable pin (falling edge)
     delay_us(1)
 
 
-def write(value, inputMode = 0):
+def write(value, inputMode=0):
     delay_us(1000)  # 1 ms delay to be safe
     gpio.output(rs, inputMode)    # set input mode (0=instruction, 1=character)
     theShifter.setValue(value)
@@ -75,8 +75,12 @@ def initialize():  # initialize the display:
     write(int('00000001', 2))  # clear display
 
 
-def shift(steps, display = 0):     # shift cursor/display by # steps left/right
-    pass  # this is a lab 3 problem
+def shift(steps, display=0):     # shift cursor/display by # steps left/right
+    for i in range(steps):
+        if steps > 0:
+            write(0b00010100 & (display << 3))  # shift right
+        else:
+            write(0b00010000 & (display << 3))  # shift left
 
 
 def scroll(steps):  # scroll the screen left a set # of steps, then return
@@ -84,34 +88,37 @@ def scroll(steps):  # scroll the screen left a set # of steps, then return
 
 try:
     initialize()
-
-    # writeMessage() demo:
-    set_row_col(0)  # go to 1st row
-    writeMessage(getIP())
-
-    set_row_col(1)  # go to 2nd row
-    writeMessage(time.asctime(time.localtime(time.time())))
-
-    time.sleep(5)
-
-    # JSON data demo:
-    clearDisplay()
-    url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
-    theJSON = getJSON(url)
-    set_row_col(0)
-    writeMessage(theJSON["metadata"]["title"])
-    set_row_col(1)
-    writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
-    time.sleep(3)
-    while True:
-        for i in theJSON["features"]:  # print events greater than 4
-            if i["properties"]["mag"] >= 4.0:
-                clearDisplay()
-                set_row_col(0)
-                writeMessage(i["properties"]["place"])
-                set_row_col(1)
-                writeMessage("Magnitude " + str(i["properties"]["mag"]))
-                time.sleep(3)
+    #
+    # # writeMessage() demo:
+    # set_row_col(0)  # go to 1st row
+    # writeMessage(getIP())
+    #
+    # set_row_col(1)  # go to 2nd row
+    # writeMessage(time.asctime(time.localtime(time.time())))
+    #
+    # time.sleep(5)
+    #
+    # # JSON data demo:
+    # clearDisplay()
+    # url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+    # theJSON = getJSON(url)
+    # set_row_col(0)
+    # writeMessage(theJSON["metadata"]["title"])
+    # set_row_col(1)
+    # writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
+    # time.sleep(3)
+    # while True:
+    #     for i in theJSON["features"]:  # print events greater than 4
+    #         if i["properties"]["mag"] >= 4.0:
+    #             clearDisplay()
+    #             set_row_col(0)
+    #             writeMessage(i["properties"]["place"])
+    #             set_row_col(1)
+    #             writeMessage("Magnitude " + str(i["properties"]["mag"]))
+    #             time.sleep(3)
+    writeMessage('A')
+    shift(1)
+    time.sleep(1)
 except KeyboardInterrupt:
     clearDisplay()
     gpio.cleanup()
