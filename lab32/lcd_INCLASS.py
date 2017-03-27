@@ -78,7 +78,7 @@ def initialize():  # initialize the display:
 def shift(steps, display=0):     # shift cursor/display by # steps left/right
     for i in range(steps):
         if steps > 0:
-            write(0b00010100)  # shift right & (display << 3)
+            write(0b00010100 & (display << 3))  # shift right
         else:
             write(0b00010000 & (display << 3))  # shift left
 
@@ -119,7 +119,9 @@ try:
     time.sleep(3)
     writeMessage('A')
     time.sleep(3)
+    writeMessage(' ')
     shift(1)
+    writeMessage('B')
     time.sleep(3)
     clearDisplay()
     gpio.cleanup()
