@@ -124,6 +124,7 @@ try:
     time.sleep(3)
     clearDisplay()
     gpio.cleanup()
+
 except KeyboardInterrupt:
     clearDisplay()
     gpio.cleanup()
