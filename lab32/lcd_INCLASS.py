@@ -137,9 +137,9 @@ try:
     time.sleep(.1) #
     writeMessage('This is a very long line of text!')
     time.sleep(3)
-    scroll(-18)
+    scroll(-17)
     time.sleep(1)
-    scroll(18)
+    scroll(17)
     #clearDisplay()
     gpio.cleanup()
 
