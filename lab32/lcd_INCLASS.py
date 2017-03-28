@@ -93,35 +93,8 @@ def scroll(steps, delay=.2):  # scroll the screen left a set # of steps, then re
             time.sleep(delay)
 
 try:
+    # Problem 1
     initialize()
-    #
-    # # writeMessage() demo:
-    # set_row_col(0)  # go to 1st row
-    # writeMessage(getIP())
-    #
-    # set_row_col(1)  # go to 2nd row
-    # writeMessage(time.asctime(time.localtime(time.time())))
-    #
-    # time.sleep(5)
-    #
-    # # JSON data demo:
-    # clearDisplay()
-    # url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
-    # theJSON = getJSON(url)
-    # set_row_col(0)
-    # writeMessage(theJSON["metadata"]["title"])
-    # set_row_col(1)
-    # writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
-    # time.sleep(3)
-    # while True:
-    #     for i in theJSON["features"]:  # print events greater than 4
-    #         if i["properties"]["mag"] >= 4.0:
-    #             clearDisplay()
-    #             set_row_col(0)
-    #             writeMessage(i["properties"]["place"])
-    #             set_row_col(1)
-    #             writeMessage("Magnitude " + str(i["properties"]["mag"]))
-    #             time.sleep(3)
     time.sleep(3)
     write(int('01000001'), 1)  # write A to screen
     time.sleep(1)
@@ -133,6 +106,7 @@ try:
         write(int('01000001'), 1)
         time.sleep(.1)
 
+    # Problem 2
     initialize()
     time.sleep(.1) #
     writeMessage('This is a very long line of text!')
@@ -142,6 +116,12 @@ try:
     scroll(17)
     #clearDisplay()
     gpio.cleanup()
+
+    # Problem 3
+    initialize()
+    url = 'https://data.cityofnewyork.us/api/views/kku6-nxdu/rows.json?accessType=DOWNLOAD'
+    theJSON = getJSON(url)
+
 
 except KeyboardInterrupt:
     clearDisplay()
