@@ -121,10 +121,10 @@ try:
     time.sleep(1)
     for i in range(16):
         shift(-1)
-        write(0b00100000)  # clear space
+        write(0b00100000, 1)  # clear space
         time.sleep(1)
         shift(1)
-        write(0b01000001)
+        write(0b01000001, 1)
         time.sleep(1)
     clearDisplay()
     gpio.cleanup()
