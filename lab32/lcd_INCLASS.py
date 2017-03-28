@@ -134,11 +134,12 @@ try:
         time.sleep(1)
 
     initialize()
-    time.sleep(.1) # 
-    writeMessage('This is a long thing')
+    time.sleep(.1) #
+    writeMessage('This is a very long line of text!')
     time.sleep(3)
-    scroll(-4)
-    scroll(4)
+    scroll(-24)
+    time.sleep(1)
+    scroll(24)
     #clearDisplay()
     gpio.cleanup()
 
