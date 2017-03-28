@@ -117,14 +117,14 @@ try:
     #             writeMessage("Magnitude " + str(i["properties"]["mag"]))
     #             time.sleep(3)
     time.sleep(3)
-    write(0b01000001, 1)  # write A to screen
+    write(int('01000001'), 1)  # write A to screen
     time.sleep(1)
     for i in range(16):
         shift(-1)
-        write(0b00100000, 1)  # clear space
+        write(int('00100000'), 1)  # clear space
         time.sleep(1)
         shift(1)
-        write(0b01000001, 1)
+        write(int('01000001'), 1)
         time.sleep(1)
     clearDisplay()
     gpio.cleanup()
