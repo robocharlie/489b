@@ -69,7 +69,7 @@ def clearDisplay():
 
 def initialize():  # initialize the display:
     write(int('00111000', 2))  # Function set: 8-bit, 2 lines, 5x8 dots
-    write(int('00001111', 2))  # Display ON, Cursor Off, Blinking Off
+    write(int('00001111', 2))  # Display ON, Cursor on, Blinking on
     write(int('00000110', 2))  # Entry Mode: Increment cursor, display shift Off
     write(int('00000010', 2))  # return home
     write(int('00000001', 2))  # clear display
@@ -83,8 +83,14 @@ def shift(steps, display=0):     # shift cursor/display by # steps left/right
             write(int('00010011', 2) | (display << 3))  # shift left
 
 
-def scroll(steps):  # scroll the screen left a set # of steps, then return
-    pass  # this is a lab 3 problem
+def scroll(steps, delay=.2):  # scroll the screen left a set # of steps, then return
+    for i in range(min(abs(steps), 24)):
+        if steps > 0:
+            shift(min(steps, 24), 1)
+            time.sleep(delay)
+        else:
+            shift(max(steps, -24), 1)
+            time.sleep(delay)
 
 try:
     initialize()
@@ -119,13 +125,17 @@ try:
     time.sleep(3)
     write(int('01000001'), 1)  # write A to screen
     time.sleep(1)
-    for i in range(16):
+
+    # move character right
+    for j in range(15):
         shift(-1)
         write(int('00100000'), 1)  # clear space
-        #time.sleep(1)
-        #shift(1)
         write(int('01000001'), 1)
         time.sleep(1)
+
+    writeMessage('This is a long thing')
+    scroll(4)
+    time.sleep(2)
     clearDisplay()
     gpio.cleanup()
 
