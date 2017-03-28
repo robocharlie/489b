@@ -134,9 +134,9 @@ try:
         time.sleep(1)
 
     writeMessage('This is a long thing')
+    time.sleep(3)
     scroll(4)
-    time.sleep(2)
-    clearDisplay()
+    #clearDisplay()
     gpio.cleanup()
 
 except KeyboardInterrupt:
