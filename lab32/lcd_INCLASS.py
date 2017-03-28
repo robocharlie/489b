@@ -78,9 +78,9 @@ def initialize():  # initialize the display:
 def shift(steps, display=0):     # shift cursor/display by # steps left/right
     for i in range(abs(steps)):
         if steps > 0:
-            write(int('00010111', 2) & (display << 3))  # shift right
+            write(int('00010111', 2))  # & (display << 3))  # shift right
         if steps < 0:
-            write(int('00010011', 2) & (display << 3))  # shift left
+            write(int('00010011', 2))  # & (display << 3))  # shift left
 
 
 def scroll(steps):  # scroll the screen left a set # of steps, then return
