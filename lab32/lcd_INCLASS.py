@@ -69,7 +69,7 @@ def clearDisplay():
 
 def initialize():  # initialize the display:
     write(int('00111000', 2))  # Function set: 8-bit, 2 lines, 5x8 dots
-    write(int('00001100', 2))  # Display ON, Cursor Off, Blinking Off
+    write(int('00001111', 2))  # Display ON, Cursor Off, Blinking Off
     write(int('00000110', 2))  # Entry Mode: Increment cursor, display shift Off
     write(int('00000010', 2))  # return home
     write(int('00000001', 2))  # clear display
