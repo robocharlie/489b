@@ -134,8 +134,10 @@ try:
         time.sleep(1)
 
     initialize()
+    time.sleep(.1)
     writeMessage('This is a long thing')
     time.sleep(3)
+    scroll(-4)
     scroll(4)
     #clearDisplay()
     gpio.cleanup()
