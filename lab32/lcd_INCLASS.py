@@ -79,7 +79,7 @@ def shift(steps, display=0):     # shift cursor/display by # steps left/right
     for i in range(steps):
         if steps > 0:
             write(int('00010111', 2))  # & (display << 3))  # shift right
-        else:
+        if steps < 0:
             write(int('00010011', 2))  # & (display << 3))  # shift left
 
 
