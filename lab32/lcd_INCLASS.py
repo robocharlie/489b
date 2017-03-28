@@ -77,11 +77,11 @@ def initialize():  # initialize the display:
 
 def shift(steps, display=0):     # shift cursor/display by # steps left/right
     for i in range(steps):
-        if steps > 0:
-            write(0b00010100 & (display << 3))  # shift right
-        else:
-            write(0b00010000 & (display << 3))  # shift left
-
+        # if steps > 0:
+        #     write(0b00010100 & (display << 3))  # shift right
+        # else:
+        #     write(0b00010000 & (display << 3))  # shift left
+        write(int('00010111', 2))
 
 def scroll(steps):  # scroll the screen left a set # of steps, then return
     pass  # this is a lab 3 problem
@@ -117,17 +117,9 @@ try:
     #             writeMessage("Magnitude " + str(i["properties"]["mag"]))
     #             time.sleep(3)
     time.sleep(3)
-    write(0b01000001, 1)
+    write(0b01000001, 1)  # write A to screen
     time.sleep(3)
-    #shift(1)
-    write(0b01000010, 1)
-    time.sleep(3)
-    shift(3)
-    delay_us(1000)
-    write(0b01000011, 1)
-    time.sleep(3)
-    # shift(-1)
-    write(0b01000100, 1)
+    shift(4)
     time.sleep(3)
     clearDisplay()
     gpio.cleanup()
