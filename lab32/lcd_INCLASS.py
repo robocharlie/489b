@@ -131,15 +131,15 @@ try:
         shift(-1)
         write(int('00100000'), 1)  # clear space
         write(int('01000001'), 1)
-        time.sleep(1)
+        time.sleep(.1)
 
     initialize()
     time.sleep(.1) #
     writeMessage('This is a very long line of text!')
     time.sleep(3)
-    scroll(-24)
+    scroll(-18)
     time.sleep(1)
-    scroll(24)
+    scroll(18)
     #clearDisplay()
     gpio.cleanup()
 
