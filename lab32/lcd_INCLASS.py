@@ -76,7 +76,7 @@ def initialize():  # initialize the display:
 
 
 def shift(steps):     # shift cursor/display by # steps left/right
-    for i in range(steps):
+    for i in range(abs(steps)):
         if steps > 0:
             write(int('00010111', 2))  # & (display << 3))  # shift right
         if steps < 0:
