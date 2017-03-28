@@ -133,6 +133,7 @@ try:
         write(int('01000001'), 1)
         time.sleep(1)
 
+    initialize()
     writeMessage('This is a long thing')
     time.sleep(3)
     scroll(4)
