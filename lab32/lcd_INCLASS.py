@@ -77,11 +77,11 @@ def initialize():  # initialize the display:
 
 def shift(steps, display=0):     # shift cursor/display by # steps left/right
     for i in range(steps):
-        # if steps > 0:
-        #     write(0b00010100 & (display << 3))  # shift right
-        # else:
-        #     write(0b00010000 & (display << 3))  # shift left
-        write(int('00010111', 2))
+        if steps > 0:
+            write(int('00010111', 2))  # & (display << 3))  # shift right
+        else:
+            write(int('00010011', 2))  # & (display << 3))  # shift left
+
 
 def scroll(steps):  # scroll the screen left a set # of steps, then return
     pass  # this is a lab 3 problem
@@ -120,6 +120,10 @@ try:
     write(0b01000001, 1)  # write A to screen
     time.sleep(3)
     shift(4)
+    write(0b01000010, 1)  # write A
+    time.sleep(3)
+    shift(-1)
+    write(0b01000011, 1)
     time.sleep(3)
     clearDisplay()
     gpio.cleanup()
