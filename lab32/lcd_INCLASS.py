@@ -123,7 +123,7 @@ try:
         shift(-1)
         write(int('00100000'), 1)  # clear space
         time.sleep(1)
-        shift(1)
+        #shift(1)
         write(int('01000001'), 1)
         time.sleep(1)
     clearDisplay()
