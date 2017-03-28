@@ -86,10 +86,10 @@ def shift(steps, display=0):     # shift cursor/display by # steps left/right
 def scroll(steps, delay=.2):  # scroll the screen left a set # of steps, then return
     for i in range(min(abs(steps), 24)):
         if steps > 0:
-            shift(min(steps, 24), 1)
+            shift(1, 1)
             time.sleep(delay)
         else:
-            shift(max(steps, -24), 1)
+            shift(-1, 1)
             time.sleep(delay)
 
 try:
