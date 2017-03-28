@@ -124,7 +124,7 @@ try:
     write(0b01000010, 1)  # write A
     time.sleep(3)
     write(int('00010011', 2))
-    write(int('00010111', 2))
+    write(int('00010011', 2))
     #shift(-3)
     write(0b01000011, 1)
     time.sleep(3)
