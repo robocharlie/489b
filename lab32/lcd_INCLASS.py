@@ -44,7 +44,7 @@ def ping():   # ping the clock enable pin (falling edge)
     delay_us(1)
 
 
-def write(value, inputMode = 0):
+def write(value, inputMode=0):
     delay_us(1000)  # 1 ms delay to be safe
     gpio.output(rs, inputMode)    # set input mode (0=instruction, 1=character)
     theShifter.setValue(value)
@@ -69,49 +69,60 @@ def clearDisplay():
 
 def initialize():  # initialize the display:
     write(int('00111000', 2))  # Function set: 8-bit, 2 lines, 5x8 dots
-    write(int('00001100', 2))  # Display ON, Cursor Off, Blinking Off
+    write(int('00001111', 2))  # Display ON, Cursor on, Blinking on
     write(int('00000110', 2))  # Entry Mode: Increment cursor, display shift Off
     write(int('00000010', 2))  # return home
     write(int('00000001', 2))  # clear display
 
 
-def shift(steps, display = 0):     # shift cursor/display by # steps left/right
-    pass  # this is a lab 3 problem
+def shift(steps, display=0):     # shift cursor/display by # steps left/right
+    for i in range(abs(steps)):
+        if steps > 0:
+            write(int('00010111', 2) | (display << 3))  # shift right
+        if steps < 0:
+            write(int('00010011', 2) | (display << 3))  # shift left
 
 
-def scroll(steps):  # scroll the screen left a set # of steps, then return
-    pass  # this is a lab 3 problem
+def scroll(steps, delay=.2):  # scroll the screen left a set # of steps, then return
+    for i in range(min(abs(steps), 24)):
+        if steps > 0:
+            shift(1, 1)
+            time.sleep(delay)
+        else:
+            shift(-1, 1)
+            time.sleep(delay)
 
 try:
+    # Problem 1
     initialize()
-
-    # writeMessage() demo:
-    set_row_col(0)  # go to 1st row
-    writeMessage(getIP())
-
-    set_row_col(1)  # go to 2nd row
-    writeMessage(time.asctime(time.localtime(time.time())))
-
-    time.sleep(5)
-
-    # JSON data demo:
-    clearDisplay()
-    url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
-    theJSON = getJSON(url)
-    set_row_col(0)
-    writeMessage(theJSON["metadata"]["title"])
-    set_row_col(1)
-    writeMessage(str(theJSON["metadata"]["count"]) + " events recorded")
     time.sleep(3)
-    while True:
-        for i in theJSON["features"]:  # print events greater than 4
-            if i["properties"]["mag"] >= 4.0:
-                clearDisplay()
-                set_row_col(0)
-                writeMessage(i["properties"]["place"])
-                set_row_col(1)
-                writeMessage("Magnitude " + str(i["properties"]["mag"]))
-                time.sleep(3)
+    write(int('01000001'), 1)  # write A to screen
+    time.sleep(1)
+
+    # move character right
+    for j in range(15):
+        shift(-1)
+        write(int('00100000'), 1)  # clear space
+        write(int('01000001'), 1)
+        time.sleep(.1)
+
+    # Problem 2
+    initialize()
+    time.sleep(.1) #
+    writeMessage('This is a very long line of text!')
+    time.sleep(3)
+    scroll(-17)
+    time.sleep(1)
+    scroll(17)
+    #clearDisplay()
+    gpio.cleanup()
+
+    # Problem 3
+    initialize()
+    url = 'https://data.cityofnewyork.us/api/views/kku6-nxdu/rows.json?accessType=DOWNLOAD'
+    theJSON = getJSON(url)
+
+
 except KeyboardInterrupt:
     clearDisplay()
     gpio.cleanup()
