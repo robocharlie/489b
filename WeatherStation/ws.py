@@ -32,7 +32,7 @@ GPIO.add_event_detect(4, GPIO.RISING)
 
 def my_callback():
     print 'There it goes!'
-GPIO.add_event_callback(4, my_callback)
+GPIO.add_event_callback(hall, my_callback)
 
 try:
     while True:
