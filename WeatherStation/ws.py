@@ -27,14 +27,15 @@ hall = 17
 
 GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+
 def my_callback(channel):
     print 'There it goes!'
 
-GPIO.add_event_detect(hall, GPIO.RISING, callback=my_callback)
+GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 
 try:
     while True:
         pass
-except:
+except KeyboardInterrupt:
     print("Exiting...")
     GPIO.cleanup()
