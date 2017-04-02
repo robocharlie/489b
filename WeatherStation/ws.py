@@ -27,7 +27,7 @@ hall = 17
 
 GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-def my_callback():
+def my_callback(channel):
     print 'There it goes!'
 
 GPIO.add_event_detect(hall, GPIO.RISING, callback=my_callback)
