@@ -32,6 +32,7 @@ GPIO.add_event_detect(hall, GPIO.RISING)
 
 def my_callback():
     print 'There it goes!'
+
 GPIO.add_event_callback(hall, my_callback)
 
 try:
@@ -39,4 +40,4 @@ try:
         pass
 except:
     print("Exiting...")
-    gpio.cleanup()
+    GPIO.cleanup()
