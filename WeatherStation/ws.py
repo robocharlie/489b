@@ -16,33 +16,34 @@ import RPi.GPIO as GPIO
 import time
 # import Adafruit_BMP.BMP085 as BMP
 import Adafruit_DHT
-import Adafruit_GPIO.SPI as SPI
-import Adafruit_MCP3008
+# import Adafruit_GPIO.SPI as SPI
+# import Adafruit_MCP3008
 
 # set pin config
 GPIO.setmode(GPIO.BCM)
 
 # Assign pin numbers
 hall = 17
-led = 4
-h_port = 5
+# led = 4
+# h_port = 5
 
 # Setup pins
 GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(led, GPIO.OUT)
+#GPIO.setup(led, GPIO.OUT)
 
 # SPI setup
-SPI_PORT = 0
-SPI_DEVICE = 0
-mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+# SPI_PORT = 0
+# SPI_DEVICE = 0
+# mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 # DHT setup
 dht = Adafruit_DHT.DHT11
 
 # BMP
-#bmp = BMP.BMP085()
+# bmp = BMP.BMP085()
 
 # time variables
+DHT_delay = 1.5
 
 
 # Callback triggered whenever the hall effect sensors sees a mag.
@@ -53,10 +54,10 @@ GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 
 try:
     while True:
-        #H, T = Adafruit_DHT.read_retry(sensor1, dataPort)
-        #print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
-        #print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
-        #print
+        H, T = Adafruit_DHT.read_retry(dht, 18)
+        # print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
+        # print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
+        # print
         pass
 except KeyboardInterrupt:
     print("Exiting...")
