@@ -14,7 +14,7 @@
 # imports
 import RPi.GPIO as GPIO
 import time
-import Adafruit_BMP.BMP085 as BMP
+# import Adafruit_BMP.BMP085 as BMP
 import Adafruit_DHT
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
@@ -40,7 +40,7 @@ mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 dht = Adafruit_DHT.DHT11
 
 # BMP
-bmp = BMP.BMP085()
+#bmp = BMP.BMP085()
 
 # time variables
 
@@ -53,10 +53,11 @@ GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 
 try:
     while True:
-        H, T = Adafruit_DHT.read_retry(sensor1, dataPort)
-        print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
-        print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
-        print
+        #H, T = Adafruit_DHT.read_retry(sensor1, dataPort)
+        #print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
+        #print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
+        #print
+        pass
 except KeyboardInterrupt:
     print("Exiting...")
     GPIO.cleanup()
