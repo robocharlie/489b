@@ -55,7 +55,7 @@ GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 try:
     while True:
         H, T = Adafruit_DHT.read_retry(dht, 18)
-        # print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
+        print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
         # print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
         # print
         pass
