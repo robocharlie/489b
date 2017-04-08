@@ -49,6 +49,7 @@ DHT_delay = 1.5
 
 # Callback triggered whenever the hall effect sensors sees a mag.
 def my_callback(channel):
+    print ''
     print 'There it goes!'
 
 GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
@@ -57,6 +58,7 @@ try:
     while True:
         H, T = Adafruit_DHT.read_retry(dht, dht_pin)
         if H is not None and T is not None:
+            print ''
             print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
             print('Temp = {0:0.2f} *C'.format(bmp.read_temperature()))
             print('Pressure = {0:0.2f} Pa'.format(bmp.read_pressure()))
