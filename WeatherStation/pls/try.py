@@ -16,8 +16,8 @@ import RPi.GPIO as GPIO
 import time
 import Adafruit_BMP.BMP085 as BMP
 import Adafruit_DHT
-# import Adafruit_GPIO.SPI as SPI
-# import Adafruit_MCP3008
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MCP3008
 
 # set pin config
 GPIO.setmode(GPIO.BCM)
@@ -33,9 +33,9 @@ GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 #GPIO.setup(led, GPIO.OUT)
 
 # SPI setup
-# SPI_PORT = 0
-# SPI_DEVICE = 0
-# mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+SPI_PORT = 0
+SPI_DEVICE = 0
+mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 # DHT setup
 dht = Adafruit_DHT.DHT11
@@ -49,8 +49,7 @@ DHT_delay = 1.5
 
 # Callback triggered whenever the hall effect sensors sees a mag.
 def my_callback(channel):
-    print ''
-    print 'There it goes!'
+    print '$$$$$$$$$$$$$$$There it goes!$$$$$$$$$$$$'
 
 GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 
@@ -64,6 +63,11 @@ try:
             print('Pressure = {0:0.2f} Pa'.format(bmp.read_pressure()))
             print('Altitude = {0:0.2f} m'.format(bmp.read_altitude()))
             print('Sealevel Pressure = {0:0.2f} Pa'.format(bmp.read_sealevel_pressure()))
+            values = [0]*4
+            print ''
+            for i in range(4):
+                values[i] = mcp.read_adc(i)
+                print(values[i])
         else:
             print 'Failed dht reading'
         time.sleep(2)
