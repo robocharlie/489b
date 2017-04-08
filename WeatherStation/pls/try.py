@@ -45,6 +45,7 @@ bmp = BMP.BMP085()
 
 # time variables
 DHT_delay = 1.5
+last_time = time.time()
 
 
 # Callback triggered whenever the hall effect sensors sees a mag.
@@ -55,22 +56,25 @@ GPIO.add_event_detect(hall, GPIO.FALLING, callback=my_callback)
 
 try:
     while True:
-        H, T = Adafruit_DHT.read_retry(dht, dht_pin)
-        if H is not None and T is not None:
-            print ''
-            print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
-            print('Temp = {0:0.2f} *C'.format(bmp.read_temperature()))
-            print('Pressure = {0:0.2f} Pa'.format(bmp.read_pressure()))
-            print('Altitude = {0:0.2f} m'.format(bmp.read_altitude()))
-            print('Sealevel Pressure = {0:0.2f} Pa'.format(bmp.read_sealevel_pressure()))
-            values = [0]*4
-            print ''
-            for i in range(4):
-                values[i] = mcp.read_adc(i)
-                print(values[i])
+        if time.time() > last_time + DHT_delay:
+            last_time = time.time()
+            H, T = Adafruit_DHT.read_retry(dht, dht_pin)
+            if H is not None and T is not None:
+                print ''
+                print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
+                print('Temp = {0:0.2f} *C'.format(bmp.read_temperature()))
+                print('Pressure = {0:0.2f} Pa'.format(bmp.read_pressure()))
+                print('Altitude = {0:0.2f} m'.format(bmp.read_altitude()))
+                print('Sealevel Pressure = {0:0.2f} Pa'.format(bmp.read_sealevel_pressure()))
+                values = [0]*4
+                print ''
+                for i in range(4):
+                    values[i] = mcp.read_adc(i)
+                    print(values[i])
+            else:
+                print 'Failed dht reading'
         else:
-            print 'Failed dht reading'
-        time.sleep(2)
+            pass
 except KeyboardInterrupt:
     print("Exiting...")
     GPIO.cleanup()
