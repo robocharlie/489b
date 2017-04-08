@@ -25,12 +25,12 @@ GPIO.setmode(GPIO.BCM)
 # Assign pin numbers
 hall = 17
 dht_pin = 18
-# led = 4
+ led = 4
 # h_port = 5
 
 # Setup pins
 GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-#GPIO.setup(led, GPIO.OUT)
+GPIO.setup(led, GPIO.OUT)
 
 # SPI setup
 SPI_PORT = 0
@@ -68,9 +68,11 @@ try:
                 print('Sealevel Pressure = {0:0.2f} Pa'.format(bmp.read_sealevel_pressure()))
                 values = [0]*4
                 print ''
+                GPIO.output(led, 1)
                 for i in range(4):
                     values[i] = mcp.read_adc(i)
                     print(values[i])
+                GPIO.output(led, 0)
             else:
                 print 'Failed dht reading'
         else:
