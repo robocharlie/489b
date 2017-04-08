@@ -14,7 +14,7 @@
 # imports
 import RPi.GPIO as GPIO
 import time
-# import Adafruit_BMP.BMP085 as BMP
+import Adafruit_BMP.BMP085 as BMP
 import Adafruit_DHT
 # import Adafruit_GPIO.SPI as SPI
 # import Adafruit_MCP3008
@@ -41,7 +41,7 @@ GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 dht = Adafruit_DHT.DHT11
 
 # BMP
-# bmp = BMP.BMP085()
+bmp = BMP.BMP085()
 
 # time variables
 DHT_delay = 1.5
@@ -58,10 +58,12 @@ try:
         H, T = Adafruit_DHT.read_retry(dht, dht_pin)
         if H is not None and T is not None:
             print 'T={0:0.1f}oC H={1:0.1f}%'.format(T, H)
+            print('Temp = {0:0.2f} *C'.format(bmp.read_temperature()))
+            print('Pressure = {0:0.2f} Pa'.format(bmp.read_pressure()))
+            print('Altitude = {0:0.2f} m'.format(bmp.read_altitude()))
+            print('Sealevel Pressure = {0:0.2f} Pa'.format(bmp.read_sealevel_pressure()))
         else:
             print 'Failed dht reading'
-        # print 'Pressure = {0:0.2f} Pa'.format(sensor2.read_pressure())
-        # print
         time.sleep(2)
 except KeyboardInterrupt:
     print("Exiting...")
