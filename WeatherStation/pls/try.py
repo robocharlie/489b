@@ -25,7 +25,7 @@ GPIO.setmode(GPIO.BCM)
 # Assign pin numbers
 hall = 17
 dht_pin = 18
- led = 4
+led = 4
 # h_port = 5
 
 # Setup pins
