@@ -5,8 +5,8 @@ GPIO.setmode(GPIO.BCM)
 pwm_pin = 24
 GPIO.setup(pwm_pin, GPIO.OUT)
 
-min = 3
-max = 12
+min = 1
+max = 14
 
 pwm = GPIO.PWM(pwm_pin, 50)
 pwm.start(0)
