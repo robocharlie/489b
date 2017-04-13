@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
-import threading
+import multiprocessing
 import time
+
 GPIO.setmode(GPIO.BCM)
 pwm_pin = 24
 GPIO.setup(pwm_pin, GPIO.OUT)
@@ -8,10 +9,11 @@ GPIO.setup(pwm_pin, GPIO.OUT)
 led_pin = 19
 GPIO.setup(led_pin, GPIO.OUT)
 
-class motorLoop(threading.Thread):
+
+class motorLoop(multiprocessing.Process):
     def __init__(self):
-        threading.Thread.__init__(self)
-    
+        multiprocessing.Process.__init__(self)
+
     def run(self):
         min = 1
         max = 13
@@ -22,6 +24,7 @@ class motorLoop(threading.Thread):
                 pwm.ChangeDutyCycle(duty_cycle)
                 print duty_cycle
                 time.sleep(.5)
+
 
 motor1 = motorLoop()
 motor1.daemon = True
