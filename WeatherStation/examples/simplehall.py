@@ -4,7 +4,7 @@ GPIO.setmode(GPIO.BCM)
 
 hall = 17
 
-GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD.up)
+GPIO.setup(hall, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
 def my_callback(channel):
