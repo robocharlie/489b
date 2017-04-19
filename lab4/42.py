@@ -1,15 +1,15 @@
 import RPi.GPIO as GPIO
 import time
 
-button = 4
-led = [6, 8, 10, 12, 14]
+button = 25
+led = [4, 17, 18, 23, 24]
 b_ltr = True
 counter = 0
 led_direction = 0  # 0 is left to right, 1 is right to left
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(button, GPIO.IN)
+GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 for i in led:
     GPIO.setup(led[i-1], GPIO.OUT)
 
