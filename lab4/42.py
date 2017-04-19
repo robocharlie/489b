@@ -10,8 +10,11 @@ led_direction = 0  # 0 is left to right, 1 is right to left
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-for i in led:
-    GPIO.setup(led[i-1], GPIO.OUT)
+GPIO.setup(4, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
+GPIO.setup(24, GPIO.OUT)
 
 
 def led_toggle(num, blink):
