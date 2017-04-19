@@ -13,7 +13,7 @@ GPIO.setup(inPort, GPIO.IN)
 print "Content-type:text/html\n\n"
 print '<html><body><font color="red">'
 if GPIO.input(inPort)==0:
-    print 'GPIO' + inPort + ' is LOW'
+    print 'GPIO' + str(inPort) + ' is LOW'
 elif GPIO.inpur(inPort)==1:
-    print 'GPIO' + inPort + ' is HIGH'
-print '</body></html>'
+    print 'GPIO' + str(inPort) + ' is HIGH'
+print '</body></html>cd '
