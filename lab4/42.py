@@ -55,4 +55,6 @@ try:
     while True:
         pass
 except KeyboardInterrupt:
+    pattern2.join()
     GPIO.cleanup()
+
