@@ -8,6 +8,7 @@ GPIO.setup(pwm_pin, GPIO.OUT)
 led_pin = 19
 GPIO.setup(led_pin, GPIO.OUT)
 
+
 class motorLoop(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)

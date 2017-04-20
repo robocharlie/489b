@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import threading
 import time
 
 button = 25
@@ -17,10 +18,17 @@ GPIO.setup(23, GPIO.OUT)
 GPIO.setup(24, GPIO.OUT)
 
 
-def led_toggle(num, blink):
-    GPIO.output(led[num], 1)
-    time.sleep(blink)
-    GPIO.output(led[num], 0)
+class LedLoop(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+
+    def led_toggle(self, num, blink):
+        GPIO.output(led[num], 1)
+        time.sleep(blink)
+        GPIO.output(led[num], 0)
+
+    def run(self, direction):
+
 
 try:
     pass
