@@ -18,6 +18,7 @@ GPIO.setup(24, GPIO.OUT)
 
 
 def my_callback(channel):
+    global b_ltr
     b_ltr = not b_ltr
     print "swap"
 
