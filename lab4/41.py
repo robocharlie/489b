@@ -29,7 +29,7 @@ def led_toggle(num):
     GPIO.output(led[num], 0)
 
 
-GPIO.add_event_detect(button, GPIO.FALLING, callback=my_callback)
+GPIO.add_event_detect(button, GPIO.FALLING, callback=my_callback, bouncetime=150)
 
 try:
     while True:
