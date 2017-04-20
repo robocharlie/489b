@@ -19,18 +19,20 @@ GPIO.setup(24, GPIO.OUT)
 
 
 class LedLoop(threading.Thread):
-    def __init__(self):
+
+    def __init__(self, direction):
         threading.Thread.__init__(self)
+        self.d = direction
 
     def led_toggle(self, num, blink):
         GPIO.output(led[num], 1)
         time.sleep(blink)
         GPIO.output(led[num], 0)
 
-    def run(self, direction):
+    def run(self):
         count = 0
         while True:
-            if direction == 'right':
+            if self.d == 'right':
                 try:
                     self.led_toggle(count, .2)
                     count += 1
@@ -46,11 +48,11 @@ class LedLoop(threading.Thread):
 
 pattern1 = LedLoop()
 # pattern1.daemon = True
-pattern1.run('left')
+pattern1.run
 
 pattern2 = LedLoop()
 # pattern2.daemon = True
-pattern2.run('right')
+pattern2.run
 
 pattern1.join()
 pattern2.join()
