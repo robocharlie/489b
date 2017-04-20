@@ -43,9 +43,9 @@ class LedLoop(threading.Thread):
                 except IndexError:
                     count = len(led) - 1
 
-pattern1 = LedLoop()
-pattern1.daemon = True
-pattern1.run('right')
+# pattern1 = LedLoop()
+# pattern1.daemon = True
+# pattern1.run('right')
 
 pattern2 = LedLoop()
 pattern2.daemon = True
