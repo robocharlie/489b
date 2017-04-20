@@ -52,10 +52,12 @@ pattern2 = LedLoop()
 # pattern2.daemon = True
 pattern2.run('right')
 
+pattern1.join()
+pattern2.join()
+
 try:
     while True:
-        pattern1.join()
-        pattern2.join()
+        pass
 except KeyboardInterrupt:
     GPIO.cleanup()
 
