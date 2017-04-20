@@ -19,6 +19,7 @@ GPIO.setup(24, GPIO.OUT)
 
 def my_callback(channel):
     b_ltr = not b_ltr
+    print "swap"
 
 
 def led_toggle(num):
