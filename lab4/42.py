@@ -21,6 +21,7 @@ GPIO.setup(24, GPIO.OUT)
 class LedLoop(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
+        self.threadID = thread
 
     def led_toggle(self, num, blink):
         GPIO.output(led[num], 1)
@@ -36,6 +37,7 @@ class LedLoop(threading.Thread):
                     count += 1
                 except IndexError:
                     count = 0
+
             else:
                 try:
                     self.led_toggle(count, .15)
@@ -53,9 +55,8 @@ pattern2.run('right')
 
 try:
     while True:
-        pass
+        pattern1.join()
+        pattern2.join()
 except KeyboardInterrupt:
-    pattern1.join()
-    pattern2.join()
     GPIO.cleanup()
 
