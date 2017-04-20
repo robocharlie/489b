@@ -28,9 +28,24 @@ class LedLoop(threading.Thread):
         GPIO.output(led[num], 0)
 
     def run(self, direction):
+        count = 0
+        if direction == 'right':
+            try:
+                self.led_toggle(count, .2)
+                count += 1
+            except IndexError:
+                count = 0
+        else:
+            try:
+                self.led_toggle(count, .15)
+                count -= 1
+            except IndexError:
+                count = len(led) - 1
 
+LedLoop.run('right')
 
 try:
-    pass
+    while True:
+        pass
 except KeyboardInterrupt:
     GPIO.cleanup()
