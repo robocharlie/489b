@@ -47,6 +47,10 @@ pattern1 = LedLoop()
 pattern1.daemon = True
 pattern1.run('right')
 
+pattern2 = LedLoop()
+pattern2.daemon = True
+pattern2.run('left')
+
 try:
     while True:
         pass
