@@ -21,7 +21,6 @@ GPIO.setup(24, GPIO.OUT)
 class LedLoop(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.threadID = thread
 
     def led_toggle(self, num, blink):
         GPIO.output(led[num], 1)
