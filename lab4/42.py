@@ -29,18 +29,19 @@ class LedLoop(threading.Thread):
 
     def run(self, direction):
         count = 0
-        if direction == 'right':
-            try:
-                self.led_toggle(count, .2)
-                count += 1
-            except IndexError:
-                count = 0
-        else:
-            try:
-                self.led_toggle(count, .15)
-                count -= 1
-            except IndexError:
-                count = len(led) - 1
+        while True:
+            if direction == 'right':
+                try:
+                    self.led_toggle(count, .2)
+                    count += 1
+                except IndexError:
+                    count = 0
+            else:
+                try:
+                    self.led_toggle(count, .15)
+                    count -= 1
+                except IndexError:
+                    count = len(led) - 1
 
 pattern1 = LedLoop()
 pattern1.daemon = True
