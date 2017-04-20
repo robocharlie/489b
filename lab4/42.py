@@ -45,11 +45,11 @@ class LedLoop(threading.Thread):
                     count = len(led) - 1
 
 pattern1 = LedLoop()
-pattern1.daemon = True
+# pattern1.daemon = True
 pattern1.run('left')
 
 pattern2 = LedLoop()
-pattern2.daemon = True
+# pattern2.daemon = True
 pattern2.run('right')
 
 try:
