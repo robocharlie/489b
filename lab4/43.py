@@ -24,9 +24,6 @@ class Pulser(multiprocessing.Process):
         self.pin = pin
 
     def run(self):
-        self.pulse()
-
-    def pulse(self):
         min_power = 1
         max_power = 100
         fade_led = GPIO.PWM(self.pin, 50)
