@@ -39,10 +39,10 @@ class Pulser(multiprocessing.Process):
 def forward():
     LEDS = [Pulser(led[0]), Pulser(led[1]), Pulser(led[2]), Pulser(led[3]), Pulser(led[4])]
     for i in LEDS:
-        LEDS[i].start()
+        i.start()
         time.sleep(.1)
     for i in LEDS:
-        LEDS[i].join()
+        i.join()
 
 
 while True:
