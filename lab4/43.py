@@ -30,10 +30,10 @@ class Pulser(multiprocessing.Process):
         fade_led.start(min_power)
         for duty_cycle in range(min_power, max_power + 1):
             fade_led.ChangeDutyCycle(duty_cycle)
-            time.sleep(.5/200)
+            time.sleep(.5/50)
         for duty_cycle in range(min_power, max_power + 1):
             fade_led.ChangeDutyCycle(max_power - duty_cycle)
-            time.sleep(.5/200)
+            time.sleep(.5/50)
 
 
 # led2 = Pulser(led[1])
