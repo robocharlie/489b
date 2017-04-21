@@ -45,5 +45,15 @@ def forward():
         i.join()
 
 
+def backward():
+    LEDS = [Pulser(led[4]), Pulser(led[3]), Pulser(led[2]), Pulser(led[1]), Pulser(led[0])]
+    for i in LEDS:
+        i.start()
+        time.sleep(.1)
+    for i in LEDS:
+        i.join()
+
+
 while True:
     forward()
+    backward()
