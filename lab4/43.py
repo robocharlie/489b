@@ -24,7 +24,7 @@ class Pulser(multiprocessing.Process):
         self.pin = pin
 
     def run(self):
-        min_power = 1
+        min_power = 0
         max_power = 100
         fade_led = GPIO.PWM(self.pin, min_power)
         fade_led.start(min_power)
@@ -45,3 +45,20 @@ while True:
     led1 = Pulser(led[0])
     led1.start()
     led1.join()
+    time.sleep(.1)
+    led2 = Pulser(led[1])
+    led2.start()
+    led2.join()
+    time.sleep(.1)
+    led3 = Pulser(led[2])
+    led3.start()
+    led3.join()
+    time.sleep(.1)
+    led4 = Pulser(led[3])
+    led4.start()
+    led4.join()
+    time.sleep(.1)
+    led5 = Pulser(led[4])
+    led5.start()
+    led5.join()
+    time.sleep(.1)
