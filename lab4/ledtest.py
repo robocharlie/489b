@@ -1,6 +1,6 @@
 import time
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.OUT)
 
 p = GPIO.PWM(4, 50)  # channel=12 frequency=50Hz
