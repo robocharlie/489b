@@ -35,29 +35,15 @@ class Pulser(multiprocessing.Process):
             fade_led.ChangeDutyCycle(max_power - duty_cycle)
             time.sleep(.0025)
 
+
+def forward():
+    LEDS = [Pulser(led[0]), Pulser(led[1]), Pulser(led[2]), Pulser(led[3]), Pulser(led[4])]
+    for i in LEDS:
+        LEDS[i].start()
+        time.sleep(.1)
+    for i in LEDS:
+        LEDS[i].join()
+
+
 while True:
-    led1 = Pulser(led[0])
-    led1.start()
-    # led1.join()
-    time.sleep(.1)
-    led2 = Pulser(led[1])
-    led2.start()
-    # led2.join()
-    time.sleep(.1)
-    led3 = Pulser(led[2])
-    led3.start()
-    # led3.join()
-    time.sleep(.1)
-    led4 = Pulser(led[3])
-    led4.start()
-    # led4.join()
-    time.sleep(.1)
-    led5 = Pulser(led[4])
-    led5.start()
-    # led5.join()
-    time.sleep(.1)
-    led1.join()
-    led2.join()
-    led3.join()
-    led4.join()
-    led5.join()
+    forward()
