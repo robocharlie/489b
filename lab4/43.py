@@ -56,4 +56,4 @@ def backward():
 
 while True:
     forward()
-    backward()
+    #backward()
