@@ -62,3 +62,8 @@ while True:
     led5.start()
     # led5.join()
     time.sleep(.1)
+    led1.join()
+    led2.join()
+    led3.join()
+    led4.join()
+    led5.join()
