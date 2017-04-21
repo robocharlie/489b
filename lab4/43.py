@@ -26,7 +26,7 @@ class Pulser(multiprocessing.Process):
     def run(self):
         min_power = 1
         max_power = 100
-        fade_led = GPIO.PWM(self.pin, min_power
+        fade_led = GPIO.PWM(self.pin, min_power)
         fade_led.start(min_power)
         for duty_cycle in range(min_power, max_power + 1):
             fade_led.ChangeDutyCycle(duty_cycle)
