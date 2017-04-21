@@ -26,14 +26,14 @@ class Pulser(multiprocessing.Process):
     def run(self):
         min_power = 1
         max_power = 100
-        fade_led = GPIO.PWM(self.pin, min_power)
+        fade_led = GPIO.PWM(self.pin, 50)
         fade_led.start(0)
         for duty_cycle in range(min_power, max_power + 1):
             fade_led.ChangeDutyCycle(duty_cycle)
-            time.sleep(.5/202)
+            time.sleep(.0025)
         for duty_cycle in range(min_power, max_power + 1):
             fade_led.ChangeDutyCycle(max_power - duty_cycle)
-            time.sleep(.5/202)
+            time.sleep(.0025)
 
 
 def forward():
@@ -41,8 +41,8 @@ def forward():
     for i in LEDS:
         i.start()
         time.sleep(.1)
-    #for i in LEDS:
-        #i.join()
+    for i in LEDS:
+        i.join()
 
 
 def backward():
@@ -50,10 +50,10 @@ def backward():
     for i in LEDS:
         i.start()
         time.sleep(.1)
-    #for i in LEDS:
-        #i.join()
+    for i in LEDS:
+        i.join()
 
 
 while True:
     forward()
-    #backward()
+    backward()
