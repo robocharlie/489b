@@ -41,7 +41,7 @@ def forward():
     for i in LEDS:
         i.start()
         time.sleep(.1)
-    for i in LEDS:
+    #for i in LEDS:
         #i.join()
 
 
@@ -50,7 +50,7 @@ def backward():
     for i in LEDS:
         i.start()
         time.sleep(.1)
-    for i in LEDS:
+    #for i in LEDS:
         #i.join()
 
 
